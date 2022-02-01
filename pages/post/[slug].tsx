@@ -7,10 +7,13 @@ interface Props {
     post: Post;
 }
 
-const Post = ({post}: Props) => {
+const Post = ({ post }: Props) => {
+    console.log(post);
+    
     return ( 
         <main>
-            <Header/>
+            <Header />
+
         </main>
     );
 }
@@ -73,6 +76,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     return {
         props: {
             post,
-        }
+        },
+       revalidate:60, //ater 60 seconds, it will update the app
     }
 }
