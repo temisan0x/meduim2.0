@@ -46,11 +46,11 @@ export default function Home({posts}: Props) {
               <div className="flex justify-between items-center bg-white-400 border-y border-black p-5">
                 <p>{post.title}</p> 
                 <p>{post.description} by { post.author.name}</p>
-              </div> 
               <img
                 className='h-12 w-12 rounded-full'
                 src={urlFor(post.author.image).url()!}
                 alt="" />
+              </div> 
             </div>
           </Link>
         ))}
