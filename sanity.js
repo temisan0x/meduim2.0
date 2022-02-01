@@ -3,7 +3,7 @@
 import {
     createImageUrlBuilder,
     createCurrentUserHook,
-    createClient
+    createClient,
 } from "next-sanity";
 
 export const config = {
@@ -14,7 +14,7 @@ export const config = {
      * https://nextjs.org/docs/basic-features/environment-variables
      */
     dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
-    productId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
     apiVersion: "2021-03-25",
     /**
      * Set useCdn to `false` if your application require the fresgest possible data always

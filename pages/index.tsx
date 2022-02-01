@@ -1,12 +1,15 @@
 import Head from 'next/head';
 import Header from '../components/Header';
 import { sanityClient, urlFor } from '../sanity';
+import { Post } from '../typings';
 
 interface Props {
-  posts: [Post]
+  posts: [Post];
 }
 
-export default function Home(props: Props) {
+export default function Home({posts}: Props) {
+  console.log(posts);
+  
   return (
     <div className="max-w-7xl mx-auto">
       <Head>
@@ -36,7 +39,7 @@ export default function Home(props: Props) {
   )
 }
 
-export const getServerSiderProps = async () => {
+export const getServerSideProps = async () => {
   //fetch all information from sanity
   const query = `* [_type == "post"]{
     _id,
