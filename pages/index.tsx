@@ -30,3 +30,18 @@ export default function Home() {
     </div>
   )
 }
+
+export const getServerSiderProps = async () => {
+  //fetch all information from sanity
+  const query = `* [_type == "post"]{
+    _id,
+    title,
+    author -> {
+      name,
+      image
+    },
+    description,
+    mainImage,
+    slug,
+  }`
+}
