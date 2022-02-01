@@ -1,3 +1,4 @@
+import { GetStaticProps } from "next";
 import Header from "../../components/Header";
 import { sanityClient, urlFor } from '../../sanity';
 import { Post } from "../../typings";
@@ -32,8 +33,13 @@ export const getStaticPath = async () => {
         }
     }));
 
+    //block page from showing if it does not exist
     return {
         paths,
         fallback: 'blocking'
     }
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+    
 }
