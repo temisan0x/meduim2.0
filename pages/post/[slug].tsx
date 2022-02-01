@@ -18,7 +18,7 @@ const Post = ({post}: Props) => {
 export default Post;
 
 //prefetch all the data using getstatic path
-export const getStaticPath = async () => {
+export const getStaticPaths = async () => {
     const query = `*[_type == 'post']{
         _id,
         slug {
@@ -51,9 +51,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             image
         },
         'comments': *[
-            _type == "comment" && 
-            post.ref == ^._id &&
-            approved == true],
+                _type == "comment" && 
+                post.ref == ^._id &&
+                approved == true],
             description,
             mainImage,
             slug,
