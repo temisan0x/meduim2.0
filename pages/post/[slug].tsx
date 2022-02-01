@@ -2,18 +2,32 @@ import { GetStaticProps } from "next";
 import Header from "../../components/Header";
 import { sanityClient, urlFor } from '../../sanity';
 import { Post } from "../../typings";
+import PortableText from "react-portable-text"
 
 interface Props {
     post: Post;
 }
 
 const Post = ({ post }: Props) => {
-    console.log(post);
-    
+
     return ( 
         <main>
             <Header />
+            <img className="w-full h-40 object-cover" src={urlFor(post.mainImage).url()!} alt="image-header" />
 
+            <article className="max-w-3xl mx-auto p-5">
+                <h1 className="text-3xl mt-10 mb-3">
+                    {post.title}
+                </h1>
+                <h2 className="text-xl font-light text-grey-500">{post.description}</h2>
+                <div className="flex items-center space-x-2">
+                    <img className="h-10 w-10 rounded-full" src={urlFor(post.author.image).url()!} alt="image" />
+
+                    <p className="font-extralight text-sm">
+                        Blog post by <span className="text-blue-600">{post.author.name}</span> - Published at {new Date(post._createdAt).toLocaleString()}
+                    </p>
+                </div>
+            </article>
         </main>
     );
 }
@@ -77,6 +91,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         props: {
             post,
         },
-       revalidate:60, //ater 60 seconds, it will update the app
-    }
+        revalidate: 60, //ater 60 seconds, it will update the app
+    };
 }
