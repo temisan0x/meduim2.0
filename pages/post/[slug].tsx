@@ -21,13 +21,13 @@ const Post = ({ post }: Props) => {
                 </h1>
                 <h2 className="text-xl font-light text-grey-500">{post.description}</h2>
                 <div className="flex items-center space-x-2">
-                    <img className="h-10 w-10 rounded-full" src={urlFor(post.mainImage).url()!} alt="image" />
+                    <img className="h-10 w-10 rounded-full" src={urlFor(post.author?.image).url()!} alt="image" />
 
                     <p className="font-extralight text-sm">
-                        Blog post by <span className="text-blue-600">{post.mainImage}</span> - Published at {new Date(post._createdAt).toLocaleString()}
+                        Blog post by <span className="text-blue-600">{post.author?.name}</span> - Published at {new Date(post._createdAt).toLocaleString()}
                     </p>
                 </div>
-                <div>
+                {/* <div>
                     <PortableText
                         dataset={process.env.NEXT_PUBLIC_SANITY_DATASET!}
                         projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!}
@@ -50,7 +50,7 @@ const Post = ({ post }: Props) => {
                                 }
                             }}
                     />
-                </div>
+                </div> */}
             </article> 
         </main>
     );

@@ -3,8 +3,8 @@ export interface Post {
     _createdAt: string;
     title: string;
     author: {
-        name: string;
-        image: string;
+        name: any;
+        image: any;
     };
     description: string;
     mainImage: {

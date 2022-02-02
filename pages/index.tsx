@@ -9,8 +9,6 @@ interface Props {
 }
 
 export default function Home({posts}: Props) {
-  console.log(posts);
-  
   return (
     <div className="max-w-7xl mx-auto">
       <Head>
@@ -37,7 +35,7 @@ export default function Home({posts}: Props) {
       </div>
       {/* posts server side rende*/}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 p-2 md:p-6">
-        {posts.map(post => (
+        {posts.map((post) => (
           <Link key={post._id} href={`/post/${post.slug.current}`}>
             <div className="cursor-pointer">
               <img src={
@@ -45,10 +43,10 @@ export default function Home({posts}: Props) {
               } alt="" />
               <div className="flex justify-between items-center bg-white-400 border-y border-black p-5">
                 <p>{post.title}</p> 
-                <p>{post.description} by { post.author.name }</p>
+                <p>{post.description} by { post.author?.name }</p>
               <img
                 className='h-12 w-12 rounded-full'
-                src={urlFor(post.author.image).url()!}
+                src={urlFor(post.author?.image).url()!}
                 alt="IMG" />
               </div> 
             </div>
