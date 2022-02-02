@@ -33,4 +33,4 @@ export const sanityClient = createClient(config);
  * Read more: https//www.sanity.io/docs/image-url
  */
 
-export const urlFor = (source) => createImageUrlBuilder(config).image(source)
+export const urlFor = (source) => createImageUrlBuilder(config).image(source);
