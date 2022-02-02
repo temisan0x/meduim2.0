@@ -27,7 +27,7 @@ const Post = ({ post }: Props) => {
                         Blog post by <span className="text-blue-600">{post.author?.name}</span> - Published at {new Date(post._createdAt).toLocaleString()}
                     </p>
                 </div>
-                {/* <div>
+                <div>
                     <PortableText
                         dataset={process.env.NEXT_PUBLIC_SANITY_DATASET!}
                         projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!}
@@ -47,10 +47,10 @@ const Post = ({ post }: Props) => {
                                     <a href={href} className="text-blue-500 hover:underline">
                                         {children}
                                     </a>
-                                }
+                                },
                             }}
                     />
-                </div> */}
+                </div>
             </article> 
         </main>
     );
