@@ -35,7 +35,7 @@ export default function Home({posts}: Props) {
           className="hidden md:inline-flex h-32 lg:h-full"
           src="https://accountabilitylab.org/wp-content/uploads/2020/03/Medium-logo.png" alt="meduim logo" />
       </div>
-      {/* posts */}
+      {/* posts server side rende*/}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 p-2 md:p-6">
         {posts.map(post => (
           <Link key={post._id} href={`/post/${post.slug.current}`}>
@@ -64,11 +64,13 @@ export const getServerSideProps = async () => {
   const query = `*[_type == 'post']{
     _id,
     title,
-    slug,
-    author -> {
-    name,
-    image,
-  }
+    author-> {
+        name,
+        image,
+  },
+    description,
+    mainImage,
+    slug, 
   }`;
   
   const posts = await sanityClient.fetch(query);
