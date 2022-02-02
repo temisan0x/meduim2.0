@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function Home({posts}: Props) {
-  // console.log(posts);
+  console.log(posts);
   
   return (
     <div className="max-w-7xl mx-auto">
@@ -45,11 +45,11 @@ export default function Home({posts}: Props) {
               } alt="" />
               <div className="flex justify-between items-center bg-white-400 border-y border-black p-5">
                 <p>{post.title}</p> 
-                <p>{post.description} by { post.author.name}</p>
+                <p>{post.description} by { post.author.name }</p>
               <img
                 className='h-12 w-12 rounded-full'
                 src={urlFor(post.author.image).url()!}
-                alt="" />
+                alt="IMG" />
               </div> 
             </div>
           </Link>
@@ -61,16 +61,14 @@ export default function Home({posts}: Props) {
 
 export const getServerSideProps = async () => {
   //fetch all information from sanity
-  const query = `* [_type == "post"]{
+  const query = `*[_type == 'post']{
     _id,
     title,
-    author -> {
-      name,
-      image
-    },
-    description,
-    mainImage,
     slug,
+    author -> {
+    name,
+    image,
+  }
   }`;
   
   const posts = await sanityClient.fetch(query);
