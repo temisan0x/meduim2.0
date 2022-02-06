@@ -41,14 +41,16 @@ export default function Home({posts}: Props) {
               <img src={
                 urlFor(post.mainImage).url()!
               } alt="" />
-              <div className="flex justify-between items-center bg-white-400 border-y border-black p-5">
-                <p>{post.title}</p> 
-                <p>{post.description} by { post.author?.name }</p>
-              <img
-                className='h-12 w-12 rounded-full'
-                src={urlFor(post.author?.image).url()!}
-                alt="IMG" />
+              <div className="flex flex-col  justify-between items-center bg-white-400 border-y border-black p-5">
+                <p className='text-center'>{post.title}</p> 
               </div> 
+              <div className="flex justify-between items-center">
+                  <p className="mb-3">({post.description}) by { post.author?.name }</p>
+                  <img
+                    className='h-12 w-12 rounded-full'
+                    src={urlFor(post.author?.image).url()!}
+                    alt="IMG" />
+              </div>
             </div>
           </Link>
         ))}
