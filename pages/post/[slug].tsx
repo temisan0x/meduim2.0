@@ -82,7 +82,7 @@ const Post = ({ post }: Props) => {
                 <input
                         {...register('_id')}
                         className="shadow border rounded py-2 px-3 form-input mt-1 block w-full ring-yellow-500 ring-1 outline-none focus:none"
-                    type="text" placeholder="eg Temisan Momodu" />
+                    type="hidden"/>
                 
                 <label className="block mb-5">
                     <span className="text-gray-500">Name</span>
