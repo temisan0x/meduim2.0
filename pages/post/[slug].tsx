@@ -9,7 +9,20 @@ interface Props {
     post: Post;
 }
 
+interface IFormInput {
+    _id: string;
+    name: string;
+    email: string;
+    comment: string;
+}
+
 const Post = ({ post }: Props) => {
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<IFormInput>();
 
     return ( 
         <main>
@@ -62,23 +75,35 @@ const Post = ({ post }: Props) => {
                 <h4 className="text-3xl font-bold">Leave a comment below!</h4>
                 <hr className="py-3 mt-2" />
                 
+                <input
+                        {...register('_id')}
+                        className="shadow border rounded py-2 px-3 form-input mt-1 block w-full ring-yellow-500 ring-1 outline-none focus:none"
+                    type="text" placeholder="eg Temisan Momodu" />
+                
                 <label className="block mb-5">
                     <span className="text-gray-500">Name</span>
-                    <input 
+                    <input
+                        {...register('name', { required: true })}
                         className="shadow border rounded py-2 px-3 form-input mt-1 block w-full ring-yellow-500 ring-1 outline-none focus:none"
                         type="text" placeholder="eg Temisan Momodu"/>
                 </label>
                 <label className="block mb-5">
                     <span className="text-gray-500">Email</span>
                     <input 
+                        {...register('email', { required: true})}
                         className="shadow border rounded py-2 px-3 form-input mt-1 block w-full ring-yellow-500 ring-1 outline-none focus:none "
                         type="email" placeholder="insertemail@gmail.com"/>
                 </label>
                 <label className="block mb-5">
                     <span className="text-gray-500">Comment</span>
-                    <textarea className="border py-2 px-3 form-input mt-1 block w-full ring-yellow-500 outline-none focus:none ring-1"  placeholder="" rows={8}/>
+                    <textarea
+                        {...register("comment", { required: true})}
+                        className="border py-2 px-3 form-input mt-1 block w-full ring-yellow-500 outline-none focus:none ring-1" placeholder="" rows={8} />
                 </label>
             </form>
+
+            {/* errors will pop up if validation fails */}
+            
         </main>
     );
 }
