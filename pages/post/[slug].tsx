@@ -24,8 +24,9 @@ const Post = ({ post }: Props) => {
         formState: { errors },
     } = useForm<IFormInput>();
 
-    const onSubmit:SubmitHandler<IFormInput> = async(data)=> {
-        await fetch('/api/createComment', {
+    const onSubmit:SubmitHandler<IFormInput> = (data)=> {
+        //push data to the backend
+        fetch('/api/createComment', {
             method: 'POST',
             body: JSON.stringify(data),
         })

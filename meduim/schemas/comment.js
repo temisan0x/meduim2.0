@@ -1,25 +1,25 @@
-export default {
-    name: 'comment',
-    title: 'comment',
-    type: 'comment',
+export default  {
+    name: "comment",
+    type: "document",
+    title:"Comment",
     fields: [
         {
-            name: 'name',
-            type: 'string',
+            name: "name",
+            type: "string",
         },
         {
-            name: 'approved',
-            title: 'Approved',
-            type: 'boolean',
+            title: "Approved",
+            name: "approved",
+            type: "boolean",
             description: "Comments won't show on the site without approval",
         },
         {
-            name: 'email',
-            type: 'string',
+            name: "email",
+            type: "string",
         },
         {
-            name: 'comment',
-            type: 'text',
+            name: "comment",
+            type: "text",
         },
         {
             name: "post",
@@ -28,4 +28,3 @@ export default {
         },
     ],
 };
-    

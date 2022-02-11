@@ -10,11 +10,12 @@ const config = {
 const client = sanityClient(config);
 
 export default async function createComment(
-req: NextApiRequest,
-res: NextApiResponse
+    req: NextApiRequest,
+    res: NextApiResponse
 ) {
     const { _id, name, email, comment } = JSON.parse(req.body);
     try {
+        // create document in sanity cms
         await client.create({
             _type: 'comment',
             post: {
